@@ -75,21 +75,18 @@
                 <!-- User profile and search -->
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                       @if (Auth::user())                         
-                        <img src="{{ URL::to('upload/user/avatar/'.Auth::user()->avatar)}}" alt="user" class="rounded-circle" width="31">
-                        @endif                            
+                    <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">                        
+                        <img src="" alt="user" class="rounded-circle" width="31">                          
                     </a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                        <a class="dropdown-item" href="{{url('admin/user/profile/'.Auth::user()->id)}}"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-                         <a class="dropdown-item" href="{{ route('logout') }}"
+                        <a class="dropdown-item" href=""><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
+                         <a class="dropdown-item" href=""
                          onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
                             <i class="ti-wallet m-r-5 m-l-5"></i> Logout
                         </a>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
+                        <form id="logout-form" action="" method="POST" style="display: none;">
                         </form>
                     </div>
                 </li>
