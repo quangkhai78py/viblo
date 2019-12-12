@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostsTable extends Migration
+class CreateUserOrganizationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,16 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title')->nullable();
-            $table->longtext('content')->nullable();
+        Schema::create('user__organization', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->integer('user_id')->unsigned()->nullable();
             $table->integer('organization_id')->unsigned()->nullable();
             $table->timestamps();
         });
 
-        Schema::table('posts', function($table) {
-            $table->foreign('organization_id')->references('id')->on('organization');
+        Schema::table('user__organization', function($table) {
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('organization_id')->references('id')->on('organization');
         });
     }
 
@@ -35,6 +33,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('user__organization');
     }
 }

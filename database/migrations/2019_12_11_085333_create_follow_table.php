@@ -17,12 +17,14 @@ class CreateFollowTable extends Migration
             $table->bigIncrements('id');
             $table->integer('user_id_following')->unsigned()->nullable();
             $table->integer('user_id_follower')->unsigned()->nullable();
+            $table->integer('organization_user_id_follower')->unsigned()->nullable();
             $table->timestamps();
         });
 
         Schema::table('follow', function($table) {
             $table->foreign('user_id_following')->references('id')->on('users');
             $table->foreign('user_id_follower')->references('id')->on('users');
+            $table->foreign('organization_user_id_follower')->references('id')->on('users');
         });
     }
 
