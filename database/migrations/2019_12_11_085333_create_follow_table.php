@@ -15,6 +15,7 @@ class CreateFollowTable extends Migration
     {
         Schema::create('follow', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('follow_unfollow')->nullable()->comment = '1:follow 0:unfollow';
             $table->integer('user_id_following')->unsigned()->nullable();
             $table->integer('user_id_follower')->unsigned()->nullable();
             $table->integer('organization_user_id_follower')->unsigned()->nullable();
