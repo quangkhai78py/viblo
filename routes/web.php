@@ -24,4 +24,5 @@ Route::group([
 	'namespace'=>'Admin',
 ], function(){
 	Route::get('/dashboard','AdminController@index')->name('dashboard');
+	Route::get('/profile','AdminController@showProfile')->name('show.profile');
 });
