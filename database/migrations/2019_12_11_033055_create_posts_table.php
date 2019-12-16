@@ -17,14 +17,18 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title')->nullable();
             $table->longtext('content')->nullable();
+            $table->integer('category_id')->unsigned()->nullable();
             $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('series_id')->unsigned()->nullable();
             $table->integer('organization_id')->unsigned()->nullable();
             $table->timestamps();
         });
 
         Schema::table('posts', function($table) {
-            $table->foreign('organization_id')->references('id')->on('organization');
+            $table->foreign('organization_id')->references('id')->on('organizations');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('series_id')->references('id')->on('series');
         });
     }
 

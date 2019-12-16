@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateViewTable extends Migration
+class CreateViewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateViewTable extends Migration
      */
     public function up()
     {
-        Schema::create('view', function (Blueprint $table) {
+        Schema::create('views', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('view')->nullable();
             $table->integer('post_id')->unsigned()->nullable();       
@@ -21,7 +21,7 @@ class CreateViewTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('view', function($table) {
+        Schema::table('views', function($table) {
             $table->foreign('question_id')->references('id')->on('questions');
             $table->foreign('post_id')->references('id')->on('posts');
         });
@@ -34,6 +34,6 @@ class CreateViewTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('view');
+        Schema::dropIfExists('views');
     }
 }

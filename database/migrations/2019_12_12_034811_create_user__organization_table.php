@@ -22,7 +22,7 @@ class CreateUserOrganizationTable extends Migration
 
         Schema::table('user__organization', function($table) {
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('organization_id')->references('id')->on('organization');
+            $table->foreign('organization_id')->references('id')->on('organizations');
         });
     }
 

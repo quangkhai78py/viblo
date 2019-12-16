@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEvaluateTable extends Migration
+class CreateEvaluatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateEvaluateTable extends Migration
      */
     public function up()
     {
-        Schema::create('evaluate', function (Blueprint $table) {
+        Schema::create('evaluates', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('score')->nullable();
             $table->integer('reputation')->nullable();
@@ -24,7 +24,7 @@ class CreateEvaluateTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('evaluate', function($table) {
+        Schema::table('evaluates', function($table) {
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('post_id')->references('id')->on('posts');
             $table->foreign('question_id')->references('id')->on('questions');
@@ -39,6 +39,6 @@ class CreateEvaluateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('evaluate');
+        Schema::dropIfExists('evaluates');
     }
 }
