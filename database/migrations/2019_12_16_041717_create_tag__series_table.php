@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSeriesTagTable extends Migration
+class CreateTagSeriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateSeriesTagTable extends Migration
      */
     public function up()
     {
-        Schema::create('series__tag', function (Blueprint $table) {
+        Schema::create('tag__series', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('series_id')->unsigned()->nullable();
             $table->integer('tag_id')->unsigned()->nullable();
             $table->timestamps();
         });
 
-        Schema::table('series__tag', function($table) {
+        Schema::table('tag__series', function($table) {
             $table->foreign('series_id')->references('id')->on('series');
             $table->foreign('tag_id')->references('id')->on('tags');
         });
@@ -33,6 +33,6 @@ class CreateSeriesTagTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('series__tag');
+        Schema::dropIfExists('tag__series');
     }
 }
