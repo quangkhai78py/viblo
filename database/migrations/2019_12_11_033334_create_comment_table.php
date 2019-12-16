@@ -18,7 +18,7 @@ class CreateCommentTable extends Migration
             $table->text('content_comment')->nullable();
             $table->integer('user_id')->unsigned()->nullable();
             $table->integer('post_id')->unsigned()->nullable();      
-            $table->integer('comment_id')->unsigned()->nullable();
+            $table->integer('comment_children_id')->unsigned()->nullable();
             $table->integer('question_id')->unsigned()->nullable();
             $table->integer('answer_id')->unsigned()->nullable();
             $table->timestamps();
@@ -27,7 +27,7 @@ class CreateCommentTable extends Migration
         Schema::table('comment', function($table) {
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('post_id')->references('id')->on('posts');
-            $table->foreign('comment_id')->references('id')->on('comment');
+            $table->foreign('comment_children_id')->references('id')->on('comment');
             $table->foreign('question_id')->references('id')->on('questions');
             $table->foreign('answer_id')->references('id')->on('answers');
         });

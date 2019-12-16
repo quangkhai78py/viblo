@@ -17,7 +17,6 @@ class CreateViewTable extends Migration
             $table->bigIncrements('id');
             $table->integer('view')->nullable();
             $table->integer('post_id')->unsigned()->nullable();       
-            $table->integer('user_id')->nullable();
             $table->integer('question_id')->unsigned()->nullable();
             $table->timestamps();
         });
